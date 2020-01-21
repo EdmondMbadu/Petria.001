@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.chilldrenofpatria.Book1Activity">
+
+
+
+
+    <item
+        android:id="@+id/goback"
+        android:icon="@drawable/ic_back"
+        android:title="Item1"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/action_redoLastChoice"
+        android:orderInCategory="1"
+        android:title="Redo Last Choice"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_lastCheckPoint"
+        android:orderInCategory="2"
+        android:title="Last Checkpoint"
+        app:showAsAction="never"
+          />
+    <item
+        android:id="@+id/action_startChapterOver"
+        android:orderInCategory="2"
+        android:title="Start Chapter Over"
+        app:showAsAction="never"
+        />
+
+</menu>
