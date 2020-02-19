@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/book1"
     tools:context=".HomeActivity">
 
     // this is the text for the title
@@ -16,12 +15,21 @@
         android:layout_height="wrap_content"
         android:text="The Children of Petria"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="28sp"
         android:gravity="center"
         android:textStyle="italic|bold"
         android:id="@+id/title_view"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
+
+        />
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/book1"
+        android:scaleType="fitCenter"
 
         />
 

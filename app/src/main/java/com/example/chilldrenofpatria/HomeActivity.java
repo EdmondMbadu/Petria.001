@@ -15,6 +15,7 @@ import android.widget.Toast;
 // all the buttons.
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
+    int backButtonCount;
 
     Intent intent;
 
@@ -56,4 +57,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+
+    /**
+     * When the back button is pressed at the home activity, for the first time, display a toast saying that the second press
+     * will exit the program
+     * Later on,
+     * Implement the back button for every activity so that when clicked the button behaves just like the back button on the menu bar
+     */
+    public void onBackPressed(){
+        // if the back button is pressed more than once, at the home activity
+        // get out of the screen
+        if(backButtonCount >= 1)
+        {
+            // this is kind of obscure. I need to double ckeck the specification later
+            //
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(this, "Press the back button once again to close the application.", Toast.LENGTH_SHORT).show();
+            backButtonCount++;
+        }
+    }
+
+
+
+
 }

@@ -32,7 +32,7 @@
             android:id="@+id/text_scrollChapter1"
             android:paddingTop="80dp"
             android:layout_width="match_parent"
-            android:lineSpacingExtra="10dp"
+            android:lineSpacingExtra="6dp"
             android:textSize="18sp"
             android:layout_height="match_parent"
             app:fontFamily="@font/droid_serif"

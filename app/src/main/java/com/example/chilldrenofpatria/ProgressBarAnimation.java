@@ -1,15 +1,20 @@
 package com.example.chilldrenofpatria;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 // this class is for the animation that will happen in the loading page
 public class ProgressBarAnimation extends Animation {
 
+    Intent intent;
     private Context context;
     private ProgressBar progressBar;   // the progress bar
     private TextView textView;   // the text view which changes from 0 - 100
@@ -50,6 +55,11 @@ public class ProgressBarAnimation extends Animation {
         // once the value reach the end ( in this case 100%) go to another page ( in this case the home page)
         if (value == to) {
             context.startActivity(new Intent(context, HomeActivity.class));
+
         }
     }
+
+
+
+
 }

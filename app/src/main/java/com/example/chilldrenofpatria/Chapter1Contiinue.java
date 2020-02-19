@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,18 +22,27 @@ public class Chapter1Contiinue extends AppCompatActivity  implements View.OnClic
 
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Chapter1Activity sch1= new Chapter1Activity();
+
         // set the title of the tool bar as Chapter 1
         // the beauty of this part is that I only have one toolbar resource file (toolbar.xml) that I will used again and again
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
 //        textViewChapter1.setText("Chapter 1");
-        setTitle("Chapter 1");
+        textViewChapter1.setTextSize(15);
+        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+//        setTitle("Health: "+sch1.health+" SS: "+sch1.spellSlot+"1st");
+
+//        setTitle("Chapter 1");
 
         TextView textViewScrollContinue= (TextView) findViewById(R.id.text_scrollChapter1ContinueAgain);
 
-        String noonGiftPart1 = "You looks up at the bell tower. “I haven’t heard the bell ring before curfew since the wheat fields were set on fire.”\n" +
-                "“Stay here and watch the store Ben, Me and Hilda are going to see what this is about.” David says.\n" +
-                "And without saying another word, your adoptive parents leave the bakery to you. “At least they stopped baking already.” You think. Then another thought crosses your mind. “I bet there are enough people in there that David and Hilda would never see me.”\n";
-        textViewScrollContinue.setText(noonGiftPart1);
+        String noonGiftPart1 = "You look up at the bell tower, confused. “I haven’t heard the bell ring before curfew since the wheat fields were set on fire.”\n" +
+                "“Stay here and watch the store, Ben, Hilda and I are going to see what this is about,” David says.\n" +
+                "Without saying another word, your adoptive parents leave the bakery to you. “At least they stopped baking already.” You think. Then another thought crosses your mind. “I bet there are enough people in there that David and Hilda would never see me.”\n";
+
+        // the Format method is in Chapter1 Continue
+        textViewScrollContinue.setText(sch1.Format(noonGiftPart1), TextView.BufferType.SPANNABLE);
+//        textViewScrollContinue.setText(noonGiftPart1);
 
         Button buttonStay= findViewById(R.id.button_stayWatchBakery);
         Button buttonGo= findViewById(R.id.button_GoTownHall);
@@ -79,5 +89,14 @@ public class Chapter1Contiinue extends AppCompatActivity  implements View.OnClic
 
 
         return true;
+    }
+
+    public void onBackPressed(){
+        // if the back button is pressed more than once, at the home activity
+        // get out of the screen
+        intent= new Intent(this, Book1Activity.class);
+        startActivity(intent);
+
+
     }
 }

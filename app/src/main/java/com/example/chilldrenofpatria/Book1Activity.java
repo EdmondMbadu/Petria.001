@@ -25,6 +25,8 @@ public class Book1Activity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book1);
 
+
+
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
@@ -87,6 +89,8 @@ public class Book1Activity extends AppCompatActivity implements View.OnClickList
 
         return true;
     }
+
+
 
 
 }

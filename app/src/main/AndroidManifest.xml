@@ -9,7 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StayAndWatchBakeryContinue"></activity>
+        <activity android:name=".DoleKakawContinue"></activity>
+        <activity android:name=".WhatIsThatContinue" />
+        <activity android:name=".DoleKakaw" />
+        <activity android:name=".KillSomeone" />
+        <activity android:name=".YesIDoContinue" />
+        <activity android:name=".WhatIsThat" />
+        <activity android:name=".YesIDo" />
+        <activity android:name=".NO" />
+        <activity android:name=".WhoAreYouContinue" />
+        <activity android:name=".WhatDoYouWantFromME" />
+        <activity android:name=".WhyAreYouHelping" />
+        <activity android:name=".WhoAreYou" />
+        <activity android:name=".StayInBed" />
+        <activity android:name=".FollowHer" />
+        <activity android:name=".DoNothing" />
+        <activity android:name=".RunOutAndSee" />
+        <activity android:name=".HelpMeeNoone" />
+        <activity android:name=".Meet_5" />
+        <activity android:name=".StayAndWatchBakeryContinue" />
         <activity android:name=".GoToTownHallContinue" />
         <activity android:name=".GoToTownHall" />
         <activity android:name=".StayAndWatchBakery" />
@@ -21,8 +39,8 @@
         <activity
             android:name=".Book1Activity"
             android:label="@string/title_activity_book1"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".HomeActivity"/>
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
