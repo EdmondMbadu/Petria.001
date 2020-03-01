@@ -22,8 +22,6 @@ public class StayInBed extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stay_in_bed);
 
-
-
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
         sch1 = new Chapter1Activity();
         textViewChapter1.setTextSize(15);

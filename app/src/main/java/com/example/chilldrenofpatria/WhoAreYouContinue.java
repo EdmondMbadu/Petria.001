@@ -75,9 +75,11 @@ public class WhoAreYouContinue extends AppCompatActivity  implements View.OnClic
             case R.id.button_yesIDo:
                 intent = new Intent(this, YesIDo.class);
                 startActivity(intent);
+                break;
             case R.id.button_whatIsThat:
                 intent = new Intent(this, WhatIsThat.class);
                 startActivity(intent);
+                break;
 
         }
 

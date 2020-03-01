@@ -74,6 +74,7 @@ public class WhatDoYouWantFromME extends AppCompatActivity implements View.OnCli
             case R.id.button_whyAreYouHelpingContinue:
                 intent = new Intent(this, WhoAreYouContinue.class);
                 startActivity(intent);
+                break;
 
         }
 

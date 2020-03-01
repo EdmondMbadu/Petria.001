@@ -87,7 +87,7 @@ public class KillSomeone extends AppCompatActivity implements View.OnClickListen
 
         switch (view.getId()){
             case R.id.button_KillSomeoneContinue:
-                intent = new Intent(this, KillSomeone.class);
+                intent = new Intent(this, DoleKakawContinue.class);
                 startActivity(intent);
 
         }

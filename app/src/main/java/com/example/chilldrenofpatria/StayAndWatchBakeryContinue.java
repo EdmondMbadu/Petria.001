@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,8 @@ public class StayAndWatchBakeryContinue extends AppCompatActivity implements Vie
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
 //        textViewChapter1.setText("Chapter 1");
         textViewChapter1.setTextSize(15);
+        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+
 
         TextView textView = (TextView) findViewById(R.id.text_scrollChapter1StayBakeryContinue);
         String stayBakery="You do as David says and close up the shop. You finish as the last of the sunlight disappears. The town bell rings again. \n" +

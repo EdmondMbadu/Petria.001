@@ -5,33 +5,120 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Children of Petria"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DoleKakawContinue"></activity>
-        <activity android:name=".WhatIsThatContinue" />
-        <activity android:name=".DoleKakaw" />
-        <activity android:name=".KillSomeone" />
-        <activity android:name=".YesIDoContinue" />
-        <activity android:name=".WhatIsThat" />
-        <activity android:name=".YesIDo" />
-        <activity android:name=".NO" />
-        <activity android:name=".WhoAreYouContinue" />
-        <activity android:name=".WhatDoYouWantFromME" />
-        <activity android:name=".WhyAreYouHelping" />
-        <activity android:name=".WhoAreYou" />
-        <activity android:name=".StayInBed" />
+        <activity android:name=".DancingLights"></activity>
+        <activity android:name=".ForceStrike202" />
+        <activity android:name=".ForceBolt201" />
+        <activity android:name=".StayInTheCoverContinue" />
+        <activity android:name=".CastDancingLightsContinue" />
+        <activity android:name=".StayInTheCover" />
+        <activity android:name=".CastDancingLights" />
+        <activity android:name=".CheckTheBody1612Continue" />
+        <activity android:name=".FollowTheLight1611Continue" />
+        <activity android:name=".TryToDodge15132" />
+        <activity android:name=".ReachWithShield15131" />
+        <activity android:name=".CheckTheBody1612" />
+        <activity android:name=".FollowTheLIght1611" />
+        <activity android:name=".ForceStrike9" />
+        <activity android:name=".ForceBolt8" />
+        <activity android:name=".TryToRunOut" />
+        <activity android:name=".ForceBolt6" />
+        <activity android:name=".CheckTheBody" />
+        <activity android:name=".FollowTheLightAgain" />
+        <activity android:name=".ReactWithShield" />
+        <activity android:name=".TryToSpeakToHim" />
+        <activity android:name=".forceStrikeBolt" />
+        <activity android:name=".TryToDodge" />
+        <activity android:name=".ForceStrike2" />
+        <activity
+            android:name=".ForceBolt"
+            android:label="" />
+        <activity
+            android:name=".SpeakToTheMan"
+            android:label="" />
+        <activity
+            android:name=".SitAndWait"
+            android:label="" />
+        <activity
+            android:name=".ForceStrike"
+            android:label="" />
+        <activity
+            android:name=".ForceBotCantrip"
+            android:label="" />
+        <activity
+            android:name=".GoToSleep"
+            android:label="" />
+        <activity
+            android:name=".FollowTheLight"
+            android:label="" />
+        <activity
+            android:name=".DoleKakawContinue"
+            android:label="" />
+        <activity
+            android:name=".WhatIsThatContinue"
+            android:label="" />
+        <activity
+            android:name=".DoleKakaw"
+            android:label="" />
+        <activity
+            android:name=".KillSomeone"
+            android:label="" />
+        <activity
+            android:name=".YesIDoContinue"
+            android:label="" />
+        <activity
+            android:name=".WhatIsThat"
+            android:label="" />
+        <activity
+            android:name=".YesIDo"
+            android:label="" />
+        <activity
+            android:name=".NO"
+            android:label="" />
+        <activity
+            android:name=".WhoAreYouContinue"
+            android:label="" />
+        <activity
+            android:name=".WhatDoYouWantFromME"
+            android:label="" />
+        <activity
+            android:name=".WhyAreYouHelping"
+            android:label="" />
+        <activity
+            android:name=".WhoAreYou"
+            android:label="" />
+        <activity
+            android:name=".StayInBed"
+            android:label="" />
         <activity android:name=".FollowHer" />
-        <activity android:name=".DoNothing" />
-        <activity android:name=".RunOutAndSee" />
-        <activity android:name=".HelpMeeNoone" />
-        <activity android:name=".Meet_5" />
-        <activity android:name=".StayAndWatchBakeryContinue" />
-        <activity android:name=".GoToTownHallContinue" />
-        <activity android:name=".GoToTownHall" />
+        <activity
+            android:name=".DoNothing"
+            android:label="" />
+        <activity
+            android:name=".RunOutAndSee"
+            android:label="" />
+        <activity
+            android:name=".HelpMeeNoone"
+            android:label="" />
+        <activity
+            android:name=".Meet_5"
+            android:label="" />
+        <activity
+            android:name=".StayAndWatchBakeryContinue"
+            android:label="" />
+        <activity
+            android:name=".GoToTownHallContinue"
+            android:label="" />
+        <activity
+            android:name=".GoToTownHall"
+            android:label="" />
         <activity android:name=".StayAndWatchBakery" />
-        <activity android:name=".Chapter1Contiinue" />
+        <activity
+            android:name=".Chapter1Contiinue"
+            android:label="" />
         <activity
             android:name=".Chapter1Activity"
             android:label="@string/title_activity_chapter1"

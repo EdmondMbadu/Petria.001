@@ -92,9 +92,11 @@ public class YesIDoContinue extends AppCompatActivity implements View.OnClickLis
             case R.id.button_DoleKakaw:
                 intent = new Intent(this, DoleKakaw.class);
                 startActivity(intent);
+                break;
             case R.id.button_KillSomeone:
                 intent = new Intent(this, KillSomeone.class);
                 startActivity(intent);
+                break;
         }
 
     }

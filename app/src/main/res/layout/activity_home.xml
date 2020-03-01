@@ -19,7 +19,7 @@
         android:gravity="center"
         android:textStyle="italic|bold"
         android:id="@+id/title_view"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
 
         />
@@ -28,7 +28,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@drawable/book1"
+        android:src="@drawable/petria"
         android:scaleType="fitCenter"
 
         />

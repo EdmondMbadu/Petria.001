@@ -22,6 +22,8 @@ public class NO extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_no);
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
         sch1 = new Chapter1Activity();
+
+
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -76,9 +78,11 @@ public class NO extends AppCompatActivity implements View.OnClickListener {
             case R.id.button_yesIDo:
                 intent = new Intent(this, YesIDo.class);
                 startActivity(intent);
+                break;
             case R.id.button_whatIsThat:
                 intent = new Intent(this, WhatIsThat.class);
                 startActivity(intent);
+                break;
 
         }
 

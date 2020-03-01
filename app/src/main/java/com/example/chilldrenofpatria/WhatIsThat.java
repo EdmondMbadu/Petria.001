@@ -73,6 +73,7 @@ public class WhatIsThat extends AppCompatActivity  implements View.OnClickListen
             case R.id.button_whatIsThatContinue:
                 intent = new Intent(this, WhoAreYou.class);
                 startActivity(intent);
+                break;
 
         }
 

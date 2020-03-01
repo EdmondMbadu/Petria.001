@@ -37,7 +37,7 @@
                 android:textColor="#000"/>
 
             <Button
-                android:id="@+id/button_DoleKakawContinue"
+                android:id="@+id/button_FollowTheLight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -46,7 +46,23 @@
                 android:background="#BFBFBF"
                 android:textColor="#0E0D0D"
                 android:textSize="16sp"
-                android:text="Continue"
+                android:text="Folow the Light"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_marginBottom="20dp"
+
+                />
+            <Button
+                android:id="@+id/button_GotoSleep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:background="#BFBFBF"
+                android:textColor="#0E0D0D"
+                android:textSize="16sp"
+                android:text="Get back in Bed and go to sleep "
                 android:gravity="center"
                 android:clickable="true"
                 android:layout_marginBottom="20dp"

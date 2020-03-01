@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">Children of Petria</string>
     <string name="title_activity_book1"></string>
     <string name="title_activity_chapter1"><font size="6"></font></string>
 </resources>

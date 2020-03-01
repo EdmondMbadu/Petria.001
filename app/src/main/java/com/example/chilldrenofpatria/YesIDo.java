@@ -84,6 +84,7 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
             case R.id.button_yesIDoContinue:
                 intent = new Intent(this, YesIDoContinue.class);
                 startActivity(intent);
+                break;
         }
 
     }

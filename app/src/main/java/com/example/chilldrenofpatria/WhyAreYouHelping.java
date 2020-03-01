@@ -77,6 +77,7 @@ public class WhyAreYouHelping extends AppCompatActivity  implements View.OnClick
             case R.id.button_whyAreYouHelpingContinue:
                 intent = new Intent(this, WhoAreYouContinue.class);
                 startActivity(intent);
+                break;
 
         }
 

@@ -55,7 +55,7 @@ public class FollowHer extends AppCompatActivity implements View.OnClickListener
         Button buttonWhoAreYou= findViewById(R.id.button_whoAreYou);
         Button buttonWhyAreYouHelping= findViewById(R.id.button_whyAreYouHelping);
         Button buttonWhatDoYouWantFromMe= findViewById(R.id.button_whatDoYouWantFromMe);
-        Button buttonNo= findViewById(R.id.button_whatDoYouWantFromMe);
+        Button buttonNo= findViewById(R.id.button_No);
 
         buttonWhoAreYou.setOnClickListener(this);
         buttonWhyAreYouHelping.setOnClickListener(this);
@@ -96,16 +96,16 @@ public class FollowHer extends AppCompatActivity implements View.OnClickListener
                 startActivity(intent);
                 break;
             case R.id.button_whyAreYouHelping:
-                intent = new Intent(this, RunOutAndSee.class);
+                intent = new Intent(this, WhyAreYouHelping.class);
                 startActivity(intent);
                 break;
             case R.id.button_whatDoYouWantFromMe:
-//                intent = new Intent(this, RunOutAndSee.class);
-//                startActivity(intent);
+                intent = new Intent(this, WhatDoYouWantFromME.class);
+                startActivity(intent);
                 break;
             case R.id.button_No:
-//                intent = new Intent(this, RunOutAndSee.class);
-//                startActivity(intent);
+                intent = new Intent(this, NO.class);
+                startActivity(intent);
                 break;
         }
 

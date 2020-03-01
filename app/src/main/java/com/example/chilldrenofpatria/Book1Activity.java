@@ -89,6 +89,15 @@ public class Book1Activity extends AppCompatActivity implements View.OnClickList
 
         return true;
     }
+    public void onBackPressed(){
+        // if the back button is pressed more than once, at the home activity
+        // get out of the screen
+        intent= new Intent(this, HomeActivity.class);
+        startActivity(intent);
+
+
+    }
+
 
 
 

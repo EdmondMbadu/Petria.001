@@ -86,6 +86,7 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
             case R.id.button_whatIsThatContinue2:
                 intent = new Intent(this, YesIDoContinue.class);
                 startActivity(intent);
+                break;
 
         }
 

@@ -20,7 +20,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@drawable/bbb"
+        android:src="@drawable/baker"
         android:scaleType="fitCenter"
         />
 
