@@ -29,7 +29,7 @@ public class CheckTheBody extends AppCompatActivity implements View.OnClickListe
         textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollCheckTheBody);
-        String text="Slowly you take a breath. You look at the ball of light and begin to walk toward it. You get just close enough to touch it. It begins moving away from you. Down the stairway to the first floor, you follow the light. It takes you out into the town square.";
+        String text="Slowly you take a breath. You look at the ball of light and begin to walk toward it. You get just close enough to touch it. It begins moving away from you. Down the stairway to the first floor, you follow the light. It takes you out into the town square.\n";
         textView.setText(sch1.Format(text), TextView.BufferType.SPANNABLE);
 
         // if the button on Go to town hall continue
@@ -56,7 +56,7 @@ public class CheckTheBody extends AppCompatActivity implements View.OnClickListe
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "CheckTheBody");
                 startActivity(intent);
                 break;
         }
@@ -72,7 +72,7 @@ public class CheckTheBody extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()){
             case R.id.button_CheckTheBody1612Continue:
-                intent = new Intent(this, FollowTheLight1611Continue.class);
+                intent = new Intent(this, FollowTheLight1611Continue.class).putExtra("from", "CheckTheBody");
                 startActivity(intent);
                 break;
 

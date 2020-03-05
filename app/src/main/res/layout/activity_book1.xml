@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Book1Activity"
-
+    android:background="#FFFF"
     tools:showIn="@layout/activity_book1">
 
 
@@ -20,7 +20,7 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@drawable/baker"
+        android:src="@drawable/bennettbaker"
         android:scaleType="fitCenter"
         />
 

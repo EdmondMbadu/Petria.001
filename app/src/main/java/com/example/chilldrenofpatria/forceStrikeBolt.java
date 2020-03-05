@@ -60,7 +60,7 @@ public class forceStrikeBolt extends AppCompatActivity  implements View.OnClickL
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "forceStrikeBolt");
                 startActivity(intent);
                 break;
         }
@@ -95,7 +95,7 @@ public class forceStrikeBolt extends AppCompatActivity  implements View.OnClickL
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "forceStrikeBolt");
         startActivity(intent);
 
     }

@@ -29,15 +29,36 @@ import java.util.regex.Pattern;
 
 public class Chapter1Activity extends AppCompatActivity implements View.OnClickListener {
 
-   int health=7;
+   int health=5;
     // the spell slot arises when she kisses him;
   int spellSlot=2;
    boolean audioClicked=false;
    boolean audioPause=false;
    boolean playPressed= false;
     Intent intent;
+
+ DBHandler dbHandler;
+    // getter and setters
+    public void setSpellSlot(int spellSlot){
+        this.spellSlot=spellSlot;
+    }
+    public int getSpellSlot(){
+        return this.spellSlot;
+    }
+
+    public void setHealth(int health){
+        this.health=health;
+    }
+    public int getHealth(){
+        return this.health;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+
+        dbHandler = new DBHandler(this, null);
+        dbHandler.updateChapter("1",5,2,"Chapter1Activity","Book1Activity");
+//        dbHandler.addChapter(5,2,"MainActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter1);
         // the support toolbar is for elements in the menu bar
@@ -48,7 +69,7 @@ public class Chapter1Activity extends AppCompatActivity implements View.OnClickL
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
 //
         textViewChapter1.setTextSize(15);
-        textViewChapter1.setText(Html.fromHtml("HP: "+health+"  SS: "+ spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)));
         // how to make the set title
 //        setTitle("Health: "+health+" SS: "+spellSlot);
 
@@ -178,7 +199,7 @@ public class Chapter1Activity extends AppCompatActivity implements View.OnClickL
     public void onBackPressed(){
         // if the back button is pressed more than once, at the home activity
         // get out of the screen
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "Chapter1Activity");
         startActivity(intent);
 
 

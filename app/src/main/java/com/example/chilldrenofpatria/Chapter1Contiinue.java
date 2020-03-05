@@ -15,10 +15,13 @@ import android.widget.TextView;
 public class Chapter1Contiinue extends AppCompatActivity  implements View.OnClickListener {
 
     Intent intent;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapter1_contiinue);
+        dbHandler = new DBHandler(this, null);
+        dbHandler.updateChapter("1",5,2,"Chapter1Activity","Book1Activity");
 
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -81,7 +84,7 @@ public class Chapter1Contiinue extends AppCompatActivity  implements View.OnClic
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "Chapter1Contiinue");
                 startActivity(intent);
                 break;
         }
@@ -94,7 +97,7 @@ public class Chapter1Contiinue extends AppCompatActivity  implements View.OnClic
     public void onBackPressed(){
         // if the back button is pressed more than once, at the home activity
         // get out of the screen
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "Chapter1Contiinue");
         startActivity(intent);
 
 

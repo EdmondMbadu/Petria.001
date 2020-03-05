@@ -72,7 +72,7 @@ public class ForceStrike202 extends AppCompatActivity  implements View.OnClickLi
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceStrike202");
                 startActivity(intent);
                 break;
         }
@@ -89,6 +89,7 @@ public class ForceStrike202 extends AppCompatActivity  implements View.OnClickLi
         switch (view.getId()){
             case R.id.button_ForceStrike202End:
                 Toast.makeText(this, "END OF CHAPTER 1", Toast.LENGTH_SHORT).show();
+                intent= new Intent(this, Book1Activity.class);
                 break;
 
 
@@ -101,7 +102,7 @@ public class ForceStrike202 extends AppCompatActivity  implements View.OnClickLi
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceStrike202");
         startActivity(intent);
 
     }

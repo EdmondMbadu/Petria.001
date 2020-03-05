@@ -57,7 +57,7 @@ public class StayAndWatchBakery extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_stayWatchBakeryContinue:
-                intent = new Intent(this, StayAndWatchBakeryContinue.class);
+                intent = new Intent(this, StayAndWatchBakeryContinue.class).putExtra("from", "StayAndWatchBakery");
                 startActivity(intent);
                 break;
 
@@ -79,7 +79,7 @@ public class StayAndWatchBakery extends AppCompatActivity implements View.OnClic
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "StayAndWatchBakery");
                 startActivity(intent);
                 break;
         }
@@ -92,7 +92,7 @@ public class StayAndWatchBakery extends AppCompatActivity implements View.OnClic
     public void onBackPressed(){
         // if the back button is pressed more than once, at the home activity
         // get out of the screen
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "StayAndWatchBakery");
         startActivity(intent);
 
 

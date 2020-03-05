@@ -29,9 +29,7 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
         textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollWhatIsThatContinue);
-        String text="“Yes I do, a rough idea anyways,” you answer.\n" +
-                "\tShe smiles.\n" +
-                "\t“Unfortunately, we don’t have the time to train you conventionally, becoming a wizard by reading books and practicing spells for months is not an option. We are going to have to cheat,” she says.\n" +
+        String text= "\t“Unfortunately, we don’t have the time to train you conventionally, becoming a wizard by reading books and practicing spells for months is not an option. We are going to have to cheat,” she says.\n" +
                 "\t“What do you mean by cheat?” you ask.\n" +
                 "\t“I’m going to give you a few gifts. Nothing too special, just enough so you get yourself immediately killed,” she says. \n" +
                 "\tShe walks up to you and puts her hand on your face.\n" +
@@ -68,7 +66,7 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "WhatIsThatContinue");
                 startActivity(intent);
                 break;
         }
@@ -84,7 +82,7 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
 
         switch (view.getId()){
             case R.id.button_whatIsThatContinue2:
-                intent = new Intent(this, YesIDoContinue.class);
+                intent = new Intent(this, YesIDoContinue.class).putExtra("from", "WhatIsThatContinue");
                 startActivity(intent);
                 break;
 
@@ -95,7 +93,7 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
     // if the button back button pressed
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "WhatIsThatContinue");
         startActivity(intent);
 
 

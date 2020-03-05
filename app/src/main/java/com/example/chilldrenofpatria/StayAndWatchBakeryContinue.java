@@ -67,7 +67,7 @@ public class StayAndWatchBakeryContinue extends AppCompatActivity implements Vie
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "StayAndWatchBakeryContinue");
                 startActivity(intent);
                 break;
         }
@@ -81,7 +81,7 @@ public class StayAndWatchBakeryContinue extends AppCompatActivity implements Vie
     public void onBackPressed(){
         // if the back button is pressed more than once, at the home activity
         // get out of the screen
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "StayAndWatchBakeryContinue");
         startActivity(intent);
 
 
@@ -89,7 +89,7 @@ public class StayAndWatchBakeryContinue extends AppCompatActivity implements Vie
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.button_stayWatchBakeryContinue2:
-                intent= new Intent(this, Meet_5.class);
+                intent= new Intent(this, Meet_5.class).putExtra("from", "StayAndWatchBakeryContinue");
                 startActivity(intent);
                 break;
         }

@@ -19,6 +19,7 @@ public class WhatDoYouWantFromME extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_what_do_you_want_from_me);
 
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
         sch1 = new Chapter1Activity();
@@ -56,7 +57,7 @@ public class WhatDoYouWantFromME extends AppCompatActivity implements View.OnCli
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "WhatDoYouWantFromME");
                 startActivity(intent);
                 break;
         }
@@ -71,7 +72,7 @@ public class WhatDoYouWantFromME extends AppCompatActivity implements View.OnCli
 
 
         switch (view.getId()){
-            case R.id.button_whyAreYouHelpingContinue:
+            case R.id.button_whatDoYouWantFromMeContinue:
                 intent = new Intent(this, WhoAreYouContinue.class);
                 startActivity(intent);
                 break;
@@ -84,7 +85,7 @@ public class WhatDoYouWantFromME extends AppCompatActivity implements View.OnCli
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "WhatDoYouWantFromME");
         startActivity(intent);
 
 

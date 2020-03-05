@@ -76,7 +76,7 @@ public class DancingLights extends AppCompatActivity implements View.OnClickList
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "DancingLights");
                 startActivity(intent);
                 break;
         }
@@ -93,6 +93,7 @@ public class DancingLights extends AppCompatActivity implements View.OnClickList
         switch (view.getId()){
             case R.id.button_DancingLightsEnd:
                 Toast.makeText(this, "END OF CHAPTER 1", Toast.LENGTH_SHORT).show();
+                intent= new Intent(this, Book1Activity.class);
                 break;
 
 
@@ -105,7 +106,7 @@ public class DancingLights extends AppCompatActivity implements View.OnClickList
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "DancingLights");
         startActivity(intent);
 
     }

@@ -64,7 +64,7 @@ public class FollowTheLight extends AppCompatActivity implements View.OnClickLis
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.goback:
-                intent = new Intent(this, Book1Activity.class);
+                intent = new Intent(this, Book1Activity.class).putExtra("from", "FollowTheLight");
                 startActivity(intent);
                 break;
         }
@@ -83,6 +83,10 @@ public class FollowTheLight extends AppCompatActivity implements View.OnClickLis
                 castSpell.setVisibility(View.GONE);
                 // make two button visible on the spot
                 Button forceBot = findViewById(R.id.button_ForceBot);
+                Button sit= findViewById(R.id.button_SitAndWait);
+                sit.setVisibility(View.GONE);
+                Button speak= findViewById(R.id.button_SpeakToTheMan);
+                speak.setVisibility(View.GONE);
                 forceBot.setVisibility(View.VISIBLE);
                 Button forceStrike = findViewById(R.id.button_ForceStrike);
                 forceStrike.setVisibility(View.VISIBLE);
@@ -115,6 +119,10 @@ public class FollowTheLight extends AppCompatActivity implements View.OnClickLis
                 Button speakToTheMan= (Button) view;
                 speakToTheMan.setVisibility(View.GONE);
                 // make two button visible on the spot
+                Button cast= findViewById(R.id.button_CastASpell);
+                cast.setVisibility(View.GONE);
+                Button sitA= findViewById(R.id.button_SitAndWait);
+                sitA.setVisibility(View.GONE);
                 Button pleaseLeave= findViewById(R.id.button_PleaseLeave);
                 pleaseLeave.setVisibility(View.VISIBLE);
                 Handler handler = new Handler();
@@ -139,7 +147,7 @@ public class FollowTheLight extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed() {
         // if the back button is pressed, the home activity is summoned
 
-        intent = new Intent(this, Book1Activity.class);
+        intent = new Intent(this, Book1Activity.class).putExtra("from", "FollowTheLight");
         startActivity(intent);
 
     }

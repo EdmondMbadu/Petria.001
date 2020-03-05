@@ -62,7 +62,7 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.goback:
-                intent = new Intent(this, Book1Activity.class);
+                intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToDodge");
                 startActivity(intent);
                 break;
         }
@@ -78,7 +78,7 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
         switch (view.getId()) {
             case R.id.button_forceBolt8:
                 //15.1.1.6
-                intent = new Intent(this, ForceBolt8.class);
+                intent = new Intent(this, ForceBolt8.class).putExtra("from", "TryToDodge");
                 startActivity(intent);
 
                 break;
@@ -88,7 +88,7 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
                     Toast.makeText(this, "You do not have enough spell slot!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    intent = new Intent(this, ForceStrike9.class);
+                    intent = new Intent(this, ForceStrike9.class).putExtra("from", "TryToDodge");
                     startActivity(intent);
                 }
                 break;
@@ -102,7 +102,7 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
     public void onBackPressed() {
         // if the back button is pressed, the home activity is summoned
 
-        intent = new Intent(this, Book1Activity.class);
+        intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToDodge");
         startActivity(intent);
 
     }

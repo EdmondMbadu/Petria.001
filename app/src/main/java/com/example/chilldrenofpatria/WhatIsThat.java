@@ -28,7 +28,7 @@ public class WhatIsThat extends AppCompatActivity  implements View.OnClickListen
         setSupportActionBar(toolbar);
         textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
 
-        TextView textView = (TextView) findViewById(R.id.text_scrollYesIDo);
+        TextView textView = (TextView) findViewById(R.id.text_scrollWhatIsThat);
         String text="\n" +
                 " “Oh, my. This may take longer than I thought.” she says. “Wizards are individuals who learn magic through study and practice. They rely on their intelligence to cast spells. Normally, becoming a wizard takes much time and study to be able to cast even the most basic of spells such as cantrips. Oh, cantrips are spells that a wizard can cast as much as they like.”\n";
         textView.setText(sch1.Format(text), TextView.BufferType.SPANNABLE);
@@ -55,7 +55,7 @@ public class WhatIsThat extends AppCompatActivity  implements View.OnClickListen
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "WhatIsThat");
                 startActivity(intent);
                 break;
         }
@@ -71,7 +71,7 @@ public class WhatIsThat extends AppCompatActivity  implements View.OnClickListen
 
         switch (view.getId()){
             case R.id.button_whatIsThatContinue:
-                intent = new Intent(this, WhoAreYou.class);
+                intent = new Intent(this, WhatIsThatContinue.class).putExtra("from", "WhatIsThat");
                 startActivity(intent);
                 break;
 
@@ -82,7 +82,7 @@ public class WhatIsThat extends AppCompatActivity  implements View.OnClickListen
     // if the button back button pressed
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "WhatIsThat");
         startActivity(intent);
 
 

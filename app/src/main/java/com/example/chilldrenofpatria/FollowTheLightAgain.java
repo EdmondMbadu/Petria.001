@@ -57,7 +57,7 @@ public class FollowTheLightAgain extends AppCompatActivity implements View.OnCli
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "FollowTheLightAgain");
                 startActivity(intent);
                 break;
         }
@@ -87,7 +87,7 @@ public class FollowTheLightAgain extends AppCompatActivity implements View.OnCli
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "FollowTheLightAgain");
         startActivity(intent);
 
     }

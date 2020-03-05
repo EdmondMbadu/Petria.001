@@ -59,7 +59,7 @@ public class DoleKakawContinue extends AppCompatActivity implements View.OnClick
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "DoleKakawContinue");
                 startActivity(intent);
                 break;
         }
@@ -89,7 +89,7 @@ public class DoleKakawContinue extends AppCompatActivity implements View.OnClick
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "DoleKakawContinue");
         startActivity(intent);
 
     }

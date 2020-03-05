@@ -68,7 +68,7 @@ public class CastDancingLights extends AppCompatActivity implements View.OnClick
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "CastDancingLights");
                 startActivity(intent);
                 break;
         }
@@ -83,7 +83,7 @@ public class CastDancingLights extends AppCompatActivity implements View.OnClick
 
 
         switch (view.getId()){
-            case R.id.button_CastDancingLights:
+            case R.id.button_CastDancingLightsContinue:
                 intent = new Intent(this, CastDancingLightsContinue.class);
                 startActivity(intent);
                 break;
@@ -98,7 +98,7 @@ public class CastDancingLights extends AppCompatActivity implements View.OnClick
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "CastDancingLights");
         startActivity(intent);
 
     }

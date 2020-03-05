@@ -74,7 +74,7 @@ public class YesIDoContinue extends AppCompatActivity implements View.OnClickLis
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "YesIDoContinue");
                 startActivity(intent);
                 break;
         }
@@ -90,11 +90,11 @@ public class YesIDoContinue extends AppCompatActivity implements View.OnClickLis
 
         switch (view.getId()){
             case R.id.button_DoleKakaw:
-                intent = new Intent(this, DoleKakaw.class);
+                intent = new Intent(this, DoleKakaw.class).putExtra("from", "YesIDoContinue");;
                 startActivity(intent);
                 break;
             case R.id.button_KillSomeone:
-                intent = new Intent(this, KillSomeone.class);
+                intent = new Intent(this, KillSomeone.class).putExtra("from", "YesIDoContinue");;
                 startActivity(intent);
                 break;
         }
@@ -105,7 +105,7 @@ public class YesIDoContinue extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "YesIDoContinue");
         startActivity(intent);
 
     }

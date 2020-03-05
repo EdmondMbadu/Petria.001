@@ -16,11 +16,14 @@ import android.widget.Toast;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     int backButtonCount;
+    DBHandler dbHandler;
 
     Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        dbHandler.updateChapter("1",5,2,"HomeActivity","MainActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -46,7 +49,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()) {
             case R.id.button_book1:
-                intent = new Intent(this, Book1Activity.class);
+                intent = new Intent(this, Book1Activity.class).putExtra("from", "Home");
                 startActivity(intent);
                 break;
             case R.id.button_book2:

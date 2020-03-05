@@ -73,7 +73,7 @@ public class ForceBolt201 extends AppCompatActivity implements View.OnClickListe
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceBolt201");
                 startActivity(intent);
                 break;
         }
@@ -90,6 +90,7 @@ public class ForceBolt201 extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()){
             case R.id.button_ForceBolt201End:
                 Toast.makeText(this, "END OF CHAPTER 1", Toast.LENGTH_SHORT).show();
+                intent= new Intent(this, Book1Activity.class);
                 break;
 
 
@@ -102,7 +103,7 @@ public class ForceBolt201 extends AppCompatActivity implements View.OnClickListe
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceBolt201");
         startActivity(intent);
 
     }

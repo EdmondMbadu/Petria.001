@@ -68,7 +68,7 @@ public class StayInTheCover extends AppCompatActivity implements View.OnClickLis
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "StayInTheCover");
                 startActivity(intent);
                 break;
         }
@@ -84,7 +84,7 @@ public class StayInTheCover extends AppCompatActivity implements View.OnClickLis
 
         switch (view.getId()){
             case R.id.button_StayInTheCoverContinue:
-                intent = new Intent(this, CastDancingLightsContinue.class);
+                intent = new Intent(this, CastDancingLightsContinue.class).putExtra("from", "StayInTheCover");
                 startActivity(intent);
                 break;
 
@@ -98,7 +98,7 @@ public class StayInTheCover extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "StayInTheCover");
         startActivity(intent);
 
     }

@@ -61,7 +61,7 @@ public class ReactWithShield extends AppCompatActivity implements View.OnClickLi
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.goback:
-                intent = new Intent(this, Book1Activity.class);
+                intent = new Intent(this, Book1Activity.class).putExtra("from", "ReactWithShield");
                 startActivity(intent);
                 break;
         }
@@ -82,7 +82,8 @@ public class ReactWithShield extends AppCompatActivity implements View.OnClickLi
 
                 break;
             case R.id.button_TryToRunOut:
-                sch1.health -= 7;
+
+                sch1.setHealth(sch1.getHealth()-7);
                 //15.1.1.5
                 intent = new Intent(this, TryToRunOut.class);
                 startActivity(intent);
@@ -97,7 +98,7 @@ public class ReactWithShield extends AppCompatActivity implements View.OnClickLi
     public void onBackPressed() {
         // if the back button is pressed, the home activity is summoned
 
-        intent = new Intent(this, Book1Activity.class);
+        intent = new Intent(this, Book1Activity.class).putExtra("from", "ReactWithShield");
         startActivity(intent);
 
     }

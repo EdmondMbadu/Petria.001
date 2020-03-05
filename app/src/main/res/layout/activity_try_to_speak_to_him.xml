@@ -24,7 +24,7 @@
             // this is the text view
             // the font is serif and the color of the font is black
             <TextView
-                android:id="@+id/text_scrollForceStrike2"
+                android:id="@+id/text_scrollTryToSpeakToHim"
                 android:paddingTop="80dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

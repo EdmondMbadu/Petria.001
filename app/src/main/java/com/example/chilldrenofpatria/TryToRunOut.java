@@ -55,7 +55,7 @@ public class TryToRunOut extends AppCompatActivity  implements View.OnClickListe
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.goback:
-                intent = new Intent(this, Book1Activity.class);
+                intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToRunOut");
                 startActivity(intent);
                 break;
         }
@@ -71,11 +71,11 @@ public class TryToRunOut extends AppCompatActivity  implements View.OnClickListe
         switch (view.getId()) {
             case R.id.button_GoBackCheckpoint:
                 //15.1.1.6
-                intent = new Intent(this, SpeakToTheMan.class);
+                intent = new Intent(this, SpeakToTheMan.class).putExtra("from", "TryToRunOut");
                 startActivity(intent);
                 break;
             case R.id.button_RestartChapter:
-                intent = new Intent(this, Chapter1Activity.class);
+                intent = new Intent(this, Chapter1Activity.class).putExtra("from", "TryToRunOut");
                 startActivity(intent);
 
                 break;
@@ -89,7 +89,7 @@ public class TryToRunOut extends AppCompatActivity  implements View.OnClickListe
     public void onBackPressed() {
         // if the back button is pressed, the home activity is summoned
 
-        intent = new Intent(this, Book1Activity.class);
+        intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToRunOut");
         startActivity(intent);
 
     }

@@ -84,6 +84,22 @@
                 android:textSize="16sp"
 
                 />
+            <Button
+                android:id="@+id/button_No"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#BFBFBF"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="NO"
+                android:textColor="#0E0D0D"
+                android:textSize="16sp"
+
+                />
 
         </LinearLayout>
 

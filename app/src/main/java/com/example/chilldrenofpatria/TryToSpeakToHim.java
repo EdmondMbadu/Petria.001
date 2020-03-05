@@ -28,10 +28,10 @@ public class TryToSpeakToHim extends AppCompatActivity  implements View.OnClickL
         setSupportActionBar(toolbar);
         textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
 
-        TextView textView = (TextView) findViewById(R.id.text_scrollForceStrikeBolt);
-        String text="“Reshega Kakaw.”\n" +
-                "A spear of energy launches from your mouth as you speak. It strikes the man in the chest. He flies backward hitting the wall then drops to the floor. For a few moments, you sit and watch his unmoving body. As you think about what to do next, you hear him gasp. His body begins stumbling to its feet. Blood is streaming from his chest. He begins stumbling towards the stairs.\n";
-
+        TextView textView = (TextView) findViewById(R.id.text_scrollTryToSpeakToHim);
+        String text="“Hold on, stop!” You say.\n" +
+                "\tThe man ignores you and tries to stand as he reaches the stairs. He fails, and his legs buckle. He disappears from your sight, the wooden stairs creaking as he tumbles down. Peaking into the hallway, you look down the stairs and see the man twisted at the bottom of the stairs.\n" +
+                "\t“Oh…” you say.\n";
         textView.setText(sch1.Format(text), TextView.BufferType.SPANNABLE);
 
         // if the button on Go to town hall continue
@@ -58,7 +58,7 @@ public class TryToSpeakToHim extends AppCompatActivity  implements View.OnClickL
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "TryToSpeakToHim");
                 startActivity(intent);
                 break;
         }
@@ -73,12 +73,12 @@ public class TryToSpeakToHim extends AppCompatActivity  implements View.OnClickL
 
 
         switch (view.getId()){
-            case R.id.button_FollowTheLight1611:
-                intent = new Intent(this, FollowTheLightAgain.class);
+            case R.id.button_FollowTheLight:
+                intent = new Intent(this, FollowTheLightAgain.class).putExtra("from", "TryToSpeakToHim");
                 startActivity(intent);
                 break;
-            case R.id.button_CheckTheBody1612:
-                intent= new Intent(this, CheckTheBody.class);
+            case R.id.button_CheckTheBody:
+                intent= new Intent(this, CheckTheBody.class).putExtra("from", "TryToSpeakToHim");
                 startActivity(intent);
                 break;
 
@@ -93,7 +93,7 @@ public class TryToSpeakToHim extends AppCompatActivity  implements View.OnClickL
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "TryToSpeakToHim");
         startActivity(intent);
 
     }

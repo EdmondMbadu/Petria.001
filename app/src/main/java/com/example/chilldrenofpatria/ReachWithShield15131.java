@@ -59,7 +59,7 @@ public class ReachWithShield15131 extends AppCompatActivity implements View.OnCl
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.goback:
-                intent = new Intent(this, Book1Activity.class);
+                intent = new Intent(this, Book1Activity.class).putExtra("from", "ReachWithShield15131");
                 startActivity(intent);
                 break;
         }
@@ -79,10 +79,10 @@ public class ReachWithShield15131 extends AppCompatActivity implements View.OnCl
                 startActivity(intent);
                 break;
             case R.id.button_ForceStrike:
-                if (sch1.spellSlot <= 0) {
+                if (sch1.getSpellSlot() <= 0) {
                     Toast.makeText(this, "You do not have enough spell slot!", Toast.LENGTH_SHORT).show();
                 } else {
-                    sch1.spellSlot-=1;
+                    sch1.setSpellSlot(sch1.getSpellSlot()-1);
                     intent = new Intent(this, ForceStrike.class);
                     startActivity(intent);
                 }
@@ -97,7 +97,7 @@ public class ReachWithShield15131 extends AppCompatActivity implements View.OnCl
     public void onBackPressed() {
         // if the back button is pressed, the home activity is summoned
 
-        intent = new Intent(this, Book1Activity.class);
+        intent = new Intent(this, Book1Activity.class).putExtra("from", "ReachWithShield15131");
         startActivity(intent);
 
     }

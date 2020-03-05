@@ -63,7 +63,7 @@ public class HelpMeeNoone extends AppCompatActivity  implements View.OnClickList
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "HelpMeeNoone");
                 startActivity(intent);
                 break;
         }
@@ -94,7 +94,7 @@ public class HelpMeeNoone extends AppCompatActivity  implements View.OnClickList
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "HelpMeeNoone");
         startActivity(intent);
 
 

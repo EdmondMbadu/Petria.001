@@ -61,7 +61,7 @@ public class ForceBotCantrip extends AppCompatActivity implements View.OnClickLi
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceBotCantrip");
                 startActivity(intent);
                 break;
         }
@@ -81,10 +81,10 @@ public class ForceBotCantrip extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.button_ForceStrike:
-                if(sch1.spellSlot<=0){
+                if(sch1.getSpellSlot()<=0){
                     Toast.makeText(this, "You do not have enough spell slot!", Toast.LENGTH_SHORT).show();
                 }else {
-                    sch1.spellSlot -= 1;
+                    sch1.setSpellSlot(sch1.getSpellSlot()-1);
                     // the class is not yet implemented
                     intent = new Intent(this, ForceStrike2.class);
                     startActivity(intent);
@@ -102,7 +102,7 @@ public class ForceBotCantrip extends AppCompatActivity implements View.OnClickLi
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceBotCantrip");
         startActivity(intent);
 
     }

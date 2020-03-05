@@ -28,7 +28,7 @@ public class CastDancingLightsContinue extends AppCompatActivity implements View
         setSupportActionBar(toolbar);
         textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
 
-        TextView textView = (TextView) findViewById(R.id.text_scrollCastDancingLights);
+        TextView textView = (TextView) findViewById(R.id.text_scrollCastDancingLightsContinue);
         String text="“I guess there’s nothing else to do,” you think.\n" +
                 "\tThe flames looks ghostly dancing on the tree tops above you. Every step you take toward the fire your heart beats faster.\n" +
                 "\t“What am I even supposed to do?” you think.\n" +
@@ -42,14 +42,19 @@ public class CastDancingLightsContinue extends AppCompatActivity implements View
 
         // if the button on Go to town hall continue
         // is clicked, go to the meet 5 intent
-        Button buttonCast= findViewById(R.id.button_CastDancingLightsContinue);
+        Button buttonF= findViewById(R.id.button_ForceBolt201);
+        Button buttonStr=findViewById(R.id.button_ForceStrike202);
+        Button buttonDancing= findViewById(R.id.button_DancingLights);
 
 
 
 
 
         // when the button is clicked
-        buttonCast.setOnClickListener(this);
+
+        buttonF.setOnClickListener(this);
+        buttonDancing.setOnClickListener(this);
+        buttonStr.setOnClickListener(this);
 
 
     }
@@ -104,7 +109,7 @@ public class CastDancingLightsContinue extends AppCompatActivity implements View
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "CastDancingLightsContinue");
         startActivity(intent);
 
     }

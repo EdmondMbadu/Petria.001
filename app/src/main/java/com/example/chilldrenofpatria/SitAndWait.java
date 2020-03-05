@@ -60,7 +60,7 @@ public class SitAndWait extends AppCompatActivity implements View.OnClickListene
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "SitAndWait");
                 startActivity(intent);
                 break;
         }
@@ -80,7 +80,7 @@ public class SitAndWait extends AppCompatActivity implements View.OnClickListene
                     Toast.makeText(this, "You do not have enough spell slot!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    sch1.spellSlot-=1;
+                    sch1.setSpellSlot(sch1.getSpellSlot()-1);
                     //  15.1.3.1 ( make sure that no two classes go to the same spot)
                     intent = new Intent(this, ReachWithShield15131.class);
                     startActivity(intent);
@@ -101,7 +101,7 @@ public class SitAndWait extends AppCompatActivity implements View.OnClickListene
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "SitAndWait");
         startActivity(intent);
 
     }

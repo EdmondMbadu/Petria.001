@@ -57,7 +57,7 @@ public class WhoAreYouContinue extends AppCompatActivity  implements View.OnClic
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "WhoAreYouContinue");
                 startActivity(intent);
                 break;
         }
@@ -73,11 +73,11 @@ public class WhoAreYouContinue extends AppCompatActivity  implements View.OnClic
 
         switch (view.getId()){
             case R.id.button_yesIDo:
-                intent = new Intent(this, YesIDo.class);
+                intent = new Intent(this, YesIDo.class).putExtra("from", "WhoAreYouContinue");
                 startActivity(intent);
                 break;
             case R.id.button_whatIsThat:
-                intent = new Intent(this, WhatIsThat.class);
+                intent = new Intent(this, WhatIsThat.class).putExtra("from", "WhoAreYouContinue");
                 startActivity(intent);
                 break;
 
@@ -89,7 +89,7 @@ public class WhoAreYouContinue extends AppCompatActivity  implements View.OnClic
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "WhoAreYouContinue");
         startActivity(intent);
 
 

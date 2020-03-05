@@ -62,7 +62,7 @@ public class TryToDodge15132 extends AppCompatActivity implements View.OnClickLi
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.goback:
-                intent = new Intent(this, Book1Activity.class);
+                intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToDodge15132");
                 startActivity(intent);
                 break;
         }
@@ -78,11 +78,11 @@ public class TryToDodge15132 extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.button_GoBackCheckpoint:
                 //15.1.1.6
-                intent = new Intent(this, SpeakToTheMan.class);
+                intent = new Intent(this, SpeakToTheMan.class).putExtra("from", "TryToDodge15132");
                 startActivity(intent);
                 break;
             case R.id.button_RestartChapter:
-                intent = new Intent(this, Chapter1Activity.class);
+                intent = new Intent(this, Chapter1Activity.class).putExtra("from", "TryToDodge15132");
                 startActivity(intent);
 
                 break;
@@ -96,7 +96,7 @@ public class TryToDodge15132 extends AppCompatActivity implements View.OnClickLi
     public void onBackPressed() {
         // if the back button is pressed, the home activity is summoned
 
-        intent = new Intent(this, Book1Activity.class);
+        intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToDodge15132");
         startActivity(intent);
 
     }

@@ -60,7 +60,7 @@ public class ForceBolt extends AppCompatActivity  implements View.OnClickListene
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceBolt");
                 startActivity(intent);
                 break;
         }
@@ -76,19 +76,21 @@ public class ForceBolt extends AppCompatActivity  implements View.OnClickListene
 
         switch (view.getId()){
             case R.id.button_ReactWithShield:
-                if(sch1.spellSlot<=0)
+                if(sch1.getSpellSlot()<=0)
                 {
                     Toast.makeText(this, "You do not have enough spell slot!", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    sch1.spellSlot-=1;
+                    sch1.setSpellSlot(sch1.getSpellSlot()-1);
                     //15.1.1.4
                     intent = new Intent(this, ReactWithShield.class);
                     startActivity(intent);
                 }
                 break;
             case R.id.button_TrytoDodge:
-                sch1.health-=3;
+
+                sch1.setHealth(sch1.getHealth()-3);
+
                 //15.1.1.5
                 intent= new Intent(this, TryToDodge.class);
                 startActivity(intent);
@@ -105,7 +107,7 @@ public class ForceBolt extends AppCompatActivity  implements View.OnClickListene
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "ForceBolt");
         startActivity(intent);
 
     }

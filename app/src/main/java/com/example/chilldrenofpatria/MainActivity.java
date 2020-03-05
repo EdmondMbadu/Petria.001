@@ -2,6 +2,7 @@ package com.example.chilldrenofpatria;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
@@ -12,11 +13,22 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     TextView textView;
+    // the sqlite database
+    DBHandler dbHandler;
 
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if(dbHandler.getLastClass(1).equalsIgnoreCase("Chapter1Contiinue")){
+            intent=new Intent(this, Chapter1Contiinue.class);
+            startActivity(intent);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbHandler = new DBHandler(this, null);
+        dbHandler.addChapter(5,2,"MainActivity","");
 
         // I don't know what this is for
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

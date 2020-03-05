@@ -16,10 +16,12 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yes_ido);
+
 
 
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
@@ -27,7 +29,7 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollYesIDo);
         String text="“Yes I do, a rough idea anyways,” you answer.\n" +
@@ -66,7 +68,7 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "YesIDo");
                 startActivity(intent);
                 break;
         }
@@ -82,7 +84,7 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.button_yesIDoContinue:
-                intent = new Intent(this, YesIDoContinue.class);
+                intent = new Intent(this, YesIDoContinue.class).putExtra("from", "YesIDo");
                 startActivity(intent);
                 break;
         }
@@ -93,7 +95,7 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "YesIDo");
         startActivity(intent);
 
 

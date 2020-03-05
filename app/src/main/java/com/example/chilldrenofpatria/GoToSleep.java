@@ -59,7 +59,7 @@ public class GoToSleep extends AppCompatActivity implements View.OnClickListener
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "GoToSleep");
                 startActivity(intent);
                 break;
         }
@@ -79,6 +79,10 @@ public class GoToSleep extends AppCompatActivity implements View.OnClickListener
                 castSpell.setVisibility(View.GONE);
                 // make two button visible on the spot
                 Button forceBot= findViewById(R.id.button_ForceBot);
+                Button sit= findViewById(R.id.button_SitAndWait);
+                sit.setVisibility(View.GONE);
+                Button speak= findViewById(R.id.button_SpeakToTheMan);
+                speak.setVisibility(View.GONE);
                 Button forceStrike= findViewById(R.id.button_ForceStrike);
                 forceBot.setVisibility(View.VISIBLE);
                 forceStrike.setVisibility(View.VISIBLE);
@@ -112,6 +116,10 @@ public class GoToSleep extends AppCompatActivity implements View.OnClickListener
                 Button speakToTheMan= (Button) view;
                 speakToTheMan.setVisibility(View.GONE);
                 // make two button visible on the spot
+                Button cast= findViewById(R.id.button_CastASpell);
+                cast.setVisibility(View.GONE);
+                Button sitA= findViewById(R.id.button_SitAndWait);
+                sitA.setVisibility(View.GONE);
                 Button pleaseLeave= findViewById(R.id.button_PleaseLeave);
                 pleaseLeave.setVisibility(View.VISIBLE);
                 Handler handler = new Handler();
@@ -135,7 +143,7 @@ public class GoToSleep extends AppCompatActivity implements View.OnClickListener
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "GoToSleep");
         startActivity(intent);
 
     }

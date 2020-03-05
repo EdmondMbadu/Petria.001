@@ -80,7 +80,7 @@ import android.widget.TextView;
          // as you specify a parent activity in AndroidManifest.xml.
          switch (item.getItemId()){
              case R.id.goback:
-                 intent= new Intent(this, Book1Activity.class);
+                 intent= new Intent(this, Book1Activity.class).putExtra("from", "GoToTownHall");
                  startActivity(intent);
                  break;
          }
@@ -93,7 +93,7 @@ import android.widget.TextView;
      public void onBackPressed(){
          // if the back button is pressed more than once, at the home activity
          // get out of the screen
-         intent= new Intent(this, Book1Activity.class);
+         intent= new Intent(this, Book1Activity.class).putExtra("from", "GoToTownHall");
          startActivity(intent);
 
 

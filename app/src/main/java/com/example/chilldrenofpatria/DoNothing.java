@@ -66,7 +66,7 @@ public class DoNothing extends AppCompatActivity implements View.OnClickListener
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.goback:
-                intent= new Intent(this, Book1Activity.class);
+                intent= new Intent(this, Book1Activity.class).putExtra("from", "DoNothing");
                 startActivity(intent);
                 break;
         }
@@ -97,7 +97,7 @@ public class DoNothing extends AppCompatActivity implements View.OnClickListener
     public void onBackPressed(){
         // if the back button is pressed, the home activity is summoned
 
-        intent= new Intent(this, Book1Activity.class);
+        intent= new Intent(this, Book1Activity.class).putExtra("from", "DoNothing");
         startActivity(intent);
     }
 
