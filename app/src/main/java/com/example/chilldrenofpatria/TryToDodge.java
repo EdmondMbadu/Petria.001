@@ -17,9 +17,15 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
+
     //15.1.1.5
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+
+        dbHandler.updateChapter(1, dbHandler.getHealth(1), dbHandler.getSpell(1),"TryToDodge" ,"ForceBolt");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_try_to_dodge);
 
@@ -30,12 +36,10 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
         textViewChapter1.setTextSize(15);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: " + sch1.health + "  SS: " + sch1.spellSlot + "<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollTryToDodge);
-        String text = "“Cha.”\n" +
-                "\tA shield of energy surrounds you just as the man begins to swing. The sword breaks through the shield but misses, coming down on the floor next to you.\n" +
-                "\tHe falls to the floor with his weapon, but begins to stagger back to his feet. He’s right in front of you now. He looks very weak.\n";
+        String text = "Shifting your feet, you keep the blade from cutting you, but his elbow strikes your head. Falling backward on the floor, you look up at the man. Blood stains his shirt. He raises his sword.\n";
         textView.setText(sch1.Format(text), TextView.BufferType.SPANNABLE);
 
         // if the button on Go to town hall continue
@@ -65,6 +69,17 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
                 intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToDodge");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -84,10 +99,15 @@ public class TryToDodge extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.button_ForceStrike9:
 
-                if(sch1.spellSlot<=0){
+                if(dbHandler.getSpell(1)<=0){
                     Toast.makeText(this, "You do not have enough spell slot!", Toast.LENGTH_SHORT).show();
+
                 }
                 else {
+                    Toast.makeText(this, "You have 1 spell slot!", Toast.LENGTH_SHORT).show();
+
+                    dbHandler.updateChapter(1, dbHandler.getHealth(1), dbHandler.getSpell(1)-1,"TryToDodge" ,"ForceBolt");
+
                     intent = new Intent(this, ForceStrike9.class).putExtra("from", "TryToDodge");
                     startActivity(intent);
                 }

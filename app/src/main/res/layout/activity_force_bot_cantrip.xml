@@ -60,7 +60,7 @@
                 android:background="#BFBFBF"
                 android:textColor="#0E0D0D"
                 android:textSize="16sp"
-                android:text="Force Strike (1st level spell)"
+                android:text="Force Strike "
                 android:gravity="center"
                 android:clickable="true"
                 android:layout_marginBottom="20dp"

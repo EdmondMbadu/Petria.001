@@ -16,8 +16,11 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        dbHandler.updateChapter(1,dbHandler.getHealth(1)+2,dbHandler.getSpell(1),"WhatIsThatContinue","WhatIsThat");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_what_is_that_continue);
 
@@ -26,7 +29,7 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollWhatIsThatContinue);
         String text= "\t“Unfortunately, we don’t have the time to train you conventionally, becoming a wizard by reading books and practicing spells for months is not an option. We are going to have to cheat,” she says.\n" +
@@ -67,6 +70,20 @@ public class WhatIsThatContinue extends AppCompatActivity implements View.OnClic
         switch (item.getItemId()){
             case R.id.goback:
                 intent= new Intent(this, Book1Activity.class).putExtra("from", "WhatIsThatContinue");
+                startActivity(intent);
+                break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case  R.id.action_lastCheckPoint:
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                intent= new Intent(this, Book1Activity.class);
                 startActivity(intent);
                 break;
         }

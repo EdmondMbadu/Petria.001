@@ -17,9 +17,17 @@ public class ReachWithShield15131 extends AppCompatActivity implements View.OnCl
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        if(dbHandler.getLastClass(1).equalsIgnoreCase("SitAndWait")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"ReachWithShield15131","SitAndWait");
+        }
+        else if(dbHandler.getLastClass(1).equalsIgnoreCase("SpeakToTheMan")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"ReachWithShield15131","SpeakToTheMan");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reach_with_shield15131);
         TextView textViewChapter1 = findViewById(R.id.toolbar_textview);
@@ -27,7 +35,7 @@ public class ReachWithShield15131 extends AppCompatActivity implements View.OnCl
         textViewChapter1.setTextSize(15);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: " + sch1.health + "  SS: " + sch1.spellSlot + "<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollReachWithShield15131);
         String text = "The man’s fist swings toward your head. \n" +
@@ -62,6 +70,17 @@ public class ReachWithShield15131 extends AppCompatActivity implements View.OnCl
                 intent = new Intent(this, Book1Activity.class).putExtra("from", "ReachWithShield15131");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -79,10 +98,19 @@ public class ReachWithShield15131 extends AppCompatActivity implements View.OnCl
                 startActivity(intent);
                 break;
             case R.id.button_ForceStrike:
-                if (sch1.getSpellSlot() <= 0) {
+                if (dbHandler.getSpell(1)<=0) {
                     Toast.makeText(this, "You do not have enough spell slot!", Toast.LENGTH_SHORT).show();
+
                 } else {
-                    sch1.setSpellSlot(sch1.getSpellSlot()-1);
+
+
+                    Toast.makeText(this, "You have lost 1 spell slot!", Toast.LENGTH_SHORT).show();
+                    if(dbHandler.getBeforeLast(1).equalsIgnoreCase("SitAndWait")) {
+                        dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1)-1,"ReachWithShield15131",dbHandler.getBeforeLast(1));
+                    }
+                    else if(dbHandler.getBeforeLast(1).equalsIgnoreCase("SpeakToTheMan")) {
+                        dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1)-1,"ReachWithShield15131",dbHandler.getBeforeLast(1));
+                    }
                     intent = new Intent(this, ForceStrike.class);
                     startActivity(intent);
                 }

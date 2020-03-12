@@ -16,9 +16,14 @@ public class TryToSpeakToHim extends AppCompatActivity  implements View.OnClickL
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+
+        dbHandler.updateChapter(1, dbHandler.getHealth(1), dbHandler.getSpell(1),"TryToSpeakToHim", "ForceStrike" );
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_try_to_speak_to_him);
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
@@ -26,7 +31,7 @@ public class TryToSpeakToHim extends AppCompatActivity  implements View.OnClickL
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollTryToSpeakToHim);
         String text="“Hold on, stop!” You say.\n" +
@@ -59,6 +64,17 @@ public class TryToSpeakToHim extends AppCompatActivity  implements View.OnClickL
         switch (item.getItemId()){
             case R.id.goback:
                 intent= new Intent(this, Book1Activity.class).putExtra("from", "TryToSpeakToHim");
+                startActivity(intent);
+                break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
                 startActivity(intent);
                 break;
         }

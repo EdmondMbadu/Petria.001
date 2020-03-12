@@ -50,12 +50,7 @@
         app:showAsAction="always"
         />
 
-    <item
-        android:id="@+id/action_redoLastChoice"
-        android:orderInCategory="1"
-        android:title="Redo Last Choice"
-        app:showAsAction="never"
-        />
+
     <item
         android:id="@+id/action_lastCheckPoint"
         android:orderInCategory="2"

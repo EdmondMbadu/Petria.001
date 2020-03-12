@@ -18,9 +18,12 @@ public class StayAndWatchBakery extends AppCompatActivity implements View.OnClic
 
 
     Intent intent;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        dbHandler = new DBHandler(this, null);
+        dbHandler.updateChapter(1,5,2,"StayAndWatchBakery","Chapter1Contiinue");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stay_and_watch_bakery);
         Chapter1Activity sch1= new Chapter1Activity();
@@ -33,7 +36,7 @@ public class StayAndWatchBakery extends AppCompatActivity implements View.OnClic
 //        textViewChapter1.setText("Chapter 1");
 
         textViewChapter1.setTextSize(15);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollChapter1StayBakery);
         String stayBakery="They would be furious with you if you left the bakery and something was stolen. \n" +
@@ -58,6 +61,20 @@ public class StayAndWatchBakery extends AppCompatActivity implements View.OnClic
         switch (view.getId()){
             case R.id.button_stayWatchBakeryContinue:
                 intent = new Intent(this, StayAndWatchBakeryContinue.class).putExtra("from", "StayAndWatchBakery");
+                startActivity(intent);
+                break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case  R.id.action_lastCheckPoint:
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                intent= new Intent(this, Book1Activity.class);
                 startActivity(intent);
                 break;
 

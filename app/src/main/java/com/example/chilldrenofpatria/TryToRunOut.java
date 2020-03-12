@@ -16,8 +16,13 @@ public class TryToRunOut extends AppCompatActivity  implements View.OnClickListe
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+
+        dbHandler.updateChapter(1, dbHandler.getHealth(1), dbHandler.getSpell(1),"TryToRunOut" ,"ReactWithShield");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_try_to_run_out);
         TextView textViewChapter1 = findViewById(R.id.toolbar_textview);
@@ -25,7 +30,7 @@ public class TryToRunOut extends AppCompatActivity  implements View.OnClickListe
         textViewChapter1.setTextSize(15);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: " + sch1.health + "  SS: " + sch1.spellSlot + "<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollTryToRunOut);
         String text ="You try to pass by him to run through the doorway. He grabs your arm. A bloody sword appears from your body. Pain fills your chest. Something warm drips down your chin as you cough. The sword is gone. The man lets go of your arm and your vision fades. Your body thuds onto the creaking wooden floor.";
@@ -58,6 +63,17 @@ public class TryToRunOut extends AppCompatActivity  implements View.OnClickListe
                 intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToRunOut");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -71,11 +87,12 @@ public class TryToRunOut extends AppCompatActivity  implements View.OnClickListe
         switch (view.getId()) {
             case R.id.button_GoBackCheckpoint:
                 //15.1.1.6
-                intent = new Intent(this, SpeakToTheMan.class).putExtra("from", "TryToRunOut");
+                intent = new Intent(this, DoleKakawContinue.class).putExtra("from", "TryToRunOut");
                 startActivity(intent);
                 break;
             case R.id.button_RestartChapter:
                 intent = new Intent(this, Chapter1Activity.class).putExtra("from", "TryToRunOut");
+                dbHandler.deleteChapterContent();
                 startActivity(intent);
 
                 break;

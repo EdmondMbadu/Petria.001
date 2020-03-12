@@ -17,9 +17,20 @@ public class SpeakToTheMan extends AppCompatActivity implements View.OnClickList
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        if(dbHandler.getLastClass(1).equalsIgnoreCase("GoToSleep")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"SpeakToTheMan","GoToSleep");
+        }
+        else if(dbHandler.getLastClass(1).equalsIgnoreCase("FollowTheLight")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"SpeakToTheMan","FollowTheLight");
+        }
+        else if(dbHandler.getLastClass(1).equalsIgnoreCase("TryToDodge15132")) {
+            dbHandler.updateChapter(1,7,dbHandler.getSpell(1),"SpeakToTheMan","TryToDodge15132");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speak_to_the_man);
 
@@ -28,7 +39,7 @@ public class SpeakToTheMan extends AppCompatActivity implements View.OnClickList
         textViewChapter1.setTextSize(15);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: " + sch1.health + "  SS: " + sch1.spellSlot + "<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollSpeakToTheMan);
         String text = "“Please leave,” you say.\n" +
@@ -63,6 +74,17 @@ public class SpeakToTheMan extends AppCompatActivity implements View.OnClickList
                 intent = new Intent(this, Book1Activity.class).putExtra("from", "SpeakToTheMan");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -81,13 +103,18 @@ public class SpeakToTheMan extends AppCompatActivity implements View.OnClickList
 
                 } else {
                     //        15.1.3.1
+                    Toast.makeText(this, "You have lost a spell slot!", Toast.LENGTH_SHORT).show();
+                    dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1)-1,"SpeakToTheMan",dbHandler.getBeforeLast(1));
                     intent = new Intent(this, ReachWithShield15131.class);
                     startActivity(intent);
                 }
                 break;
             case R.id.button_TrytoDodge:
 
+
+                Toast.makeText(this, "You have lost 7 health!", Toast.LENGTH_SHORT).show();
                 //15.1.3.2
+                dbHandler.updateChapter(1,dbHandler.getHealth(1)-7,dbHandler.getSpell(1),"SpeakToTheMan",dbHandler.getBeforeLast(1));
                 intent = new Intent(this, TryToDodge15132.class);
                 startActivity(intent);
                 break;

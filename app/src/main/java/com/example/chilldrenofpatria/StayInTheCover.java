@@ -16,8 +16,13 @@ public class StayInTheCover extends AppCompatActivity implements View.OnClickLis
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+
+        dbHandler.updateChapter(1, dbHandler.getHealth(1), dbHandler.getSpell(1),"StayInTheCover", "FollowTheLight1611Continue");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stay_in_the_cover);
 
@@ -26,7 +31,7 @@ public class StayInTheCover extends AppCompatActivity implements View.OnClickLis
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollStayInTheCover);
         String text="“I think lights would be alright,” you say.\n" +
@@ -71,6 +76,17 @@ public class StayInTheCover extends AppCompatActivity implements View.OnClickLis
                 intent= new Intent(this, Book1Activity.class).putExtra("from", "StayInTheCover");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, FollowTheLight1611Continue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -85,6 +101,11 @@ public class StayInTheCover extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()){
             case R.id.button_StayInTheCoverContinue:
                 intent = new Intent(this, CastDancingLightsContinue.class).putExtra("from", "StayInTheCover");
+                startActivity(intent);
+                break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
                 startActivity(intent);
                 break;
 

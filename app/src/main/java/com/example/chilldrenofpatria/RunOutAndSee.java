@@ -16,15 +16,18 @@ public class RunOutAndSee extends AppCompatActivity  implements View.OnClickList
 
     Chapter1Activity sch1;
     Intent intent;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"RunOutAndSee","Meet_5");
         super.onCreate(savedInstanceState);
         sch1= new Chapter1Activity();
         setContentView(R.layout.activity_run_out_and_see);
         TextView textViewChapter1=findViewById(R.id.toolbar_textview);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)));
         textViewChapter1.setTextSize(15);
         TextView textView = (TextView) findViewById(R.id.text_scrollRunOutAndSee);
         String text="You look at the door, then back at Noone.\n" +
@@ -60,6 +63,20 @@ public class RunOutAndSee extends AppCompatActivity  implements View.OnClickList
                 intent= new Intent(this, Book1Activity.class).putExtra("from", "RunOutAndSee");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case  R.id.action_lastCheckPoint:
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                intent= new Intent(this, Book1Activity.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -76,6 +93,10 @@ public class RunOutAndSee extends AppCompatActivity  implements View.OnClickList
                 intent = new Intent(this, Meet_5.class);
                 startActivity(intent);
                 break;
+//            case R.id.button_GoBackLastChoice:
+//                intent = new Intent(this, Meet_5.class);
+//                startActivity(intent);
+//                break;
 
         }
 

@@ -44,7 +44,7 @@
                 android:background="#BFBFBF"
                 android:textColor="#0E0D0D"
                 android:textSize="16sp"
-                android:text="Dole Kakaw"
+                android:text="continue"
                 android:gravity="center"
                 android:clickable="true"
                 android:layout_marginBottom="20dp"

@@ -17,8 +17,16 @@ public class SitAndWait extends AppCompatActivity implements View.OnClickListene
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        if(dbHandler.getLastClass(1).equalsIgnoreCase("GoToSleep")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"SitAndWait","GoToSleep");
+        }
+        else if(dbHandler.getLastClass(1).equalsIgnoreCase("FollowTheLight")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"SitAndWait","FollowTheLight");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sit_and_wait);
 
@@ -27,7 +35,7 @@ public class SitAndWait extends AppCompatActivity implements View.OnClickListene
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollSitAndWait);
         String text="You stare him in the eyes, saying nothing.\n" +
@@ -63,6 +71,17 @@ public class SitAndWait extends AppCompatActivity implements View.OnClickListene
                 intent= new Intent(this, Book1Activity.class).putExtra("from", "SitAndWait");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -82,11 +101,17 @@ public class SitAndWait extends AppCompatActivity implements View.OnClickListene
                 else {
                     sch1.setSpellSlot(sch1.getSpellSlot()-1);
                     //  15.1.3.1 ( make sure that no two classes go to the same spot)
+                    Toast.makeText(this, "You have lost a spell slot!", Toast.LENGTH_SHORT).show();
+                    dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1)-1,"SitAndWait",dbHandler.getBeforeLast(1));
+
                     intent = new Intent(this, ReachWithShield15131.class);
                     startActivity(intent);
                 }
                 break;
             case R.id.button_TrytoDodge:
+
+                dbHandler.updateChapter(1,dbHandler.getHealth(1)-7,dbHandler.getSpell(1),"SitAndWait",dbHandler.getBeforeLast(1));
+
                 intent= new Intent(this, TryToDodge15132.class);
                 startActivity(intent);
 

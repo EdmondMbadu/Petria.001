@@ -17,8 +17,16 @@ public class WhyAreYouHelping extends AppCompatActivity  implements View.OnClick
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        if(dbHandler.getLastClass(1).equalsIgnoreCase("StayInBed")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"WhyAreYouHelping","StayInBed");
+        }
+        else if(dbHandler.getLastClass(1).equalsIgnoreCase("FollowHer")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"WhyAreYouHelping","FollowHer");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_why_are_you_helping);
 
@@ -27,7 +35,7 @@ public class WhyAreYouHelping extends AppCompatActivity  implements View.OnClick
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: "+sch1.health+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollWhYAreYouHelping);
         String text="“Why are you helping me?” you ask.\n" +
@@ -62,6 +70,20 @@ public class WhyAreYouHelping extends AppCompatActivity  implements View.OnClick
                 intent= new Intent(this, Book1Activity.class).putExtra("from", "WhyAreYouHelping");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case  R.id.action_lastCheckPoint:
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                intent= new Intent(this, Book1Activity.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -76,6 +98,11 @@ public class WhyAreYouHelping extends AppCompatActivity  implements View.OnClick
         switch (view.getId()){
             case R.id.button_whyAreYouHelpingContinue:
                 intent = new Intent(this, WhoAreYouContinue.class).putExtra("from", "WhyAreYouHelping");
+                startActivity(intent);
+                break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
                 startActivity(intent);
                 break;
 

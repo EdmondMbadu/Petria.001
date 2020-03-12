@@ -19,6 +19,8 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
     DBHandler dbHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        dbHandler.updateChapter(1,dbHandler.getHealth(1)+2,dbHandler.getSpell(1),"YesIDo","WhoAreYouContinue");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yes_ido);
 
@@ -29,7 +31,7 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
         textViewChapter1.setTextSize(15);
         Toolbar toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+"  SS: "+ sch1.spellSlot+"<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollYesIDo);
         String text="“Yes I do, a rough idea anyways,” you answer.\n" +
@@ -69,6 +71,20 @@ public class YesIDo extends AppCompatActivity implements View.OnClickListener {
         switch (item.getItemId()){
             case R.id.goback:
                 intent= new Intent(this, Book1Activity.class).putExtra("from", "YesIDo");
+                startActivity(intent);
+                break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case  R.id.action_lastCheckPoint:
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                intent= new Intent(this, Book1Activity.class);
                 startActivity(intent);
                 break;
         }

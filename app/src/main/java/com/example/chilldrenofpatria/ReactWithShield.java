@@ -17,10 +17,22 @@ public class ReactWithShield extends AppCompatActivity implements View.OnClickLi
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
 
     //15.1.1.4
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+
+        if(dbHandler.getLastClass(1).equalsIgnoreCase("ForceBolt")) {
+            dbHandler.updateChapter(1, dbHandler.getHealth(1), dbHandler.getSpell(1),"ReactWithShield" ,"ForceBolt");
+
+        }
+        else if(dbHandler.getLastClass(1).equalsIgnoreCase("TryToRunOut")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"ReactWithShield","TryToRunOut");
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_with_shield);
 
@@ -29,7 +41,7 @@ public class ReactWithShield extends AppCompatActivity implements View.OnClickLi
         textViewChapter1.setTextSize(15);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: " + sch1.health + "  SS: " + sch1.spellSlot + "<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollReachWithShield);
         String text = "“Cha.”\n" +
@@ -64,6 +76,17 @@ public class ReactWithShield extends AppCompatActivity implements View.OnClickLi
                 intent = new Intent(this, Book1Activity.class).putExtra("from", "ReactWithShield");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -82,8 +105,16 @@ public class ReactWithShield extends AppCompatActivity implements View.OnClickLi
 
                 break;
             case R.id.button_TryToRunOut:
+                if(dbHandler.getLastClass(1).equalsIgnoreCase("ForceBolt")) {
+                    dbHandler.updateChapter(1, dbHandler.getHealth(1)-7, dbHandler.getSpell(1),"ReactWithShield" ,"ForceBolt");
+                    Toast.makeText(this, "You have  taken 7 damage!", Toast.LENGTH_SHORT).show();
+                }
+                else if(dbHandler.getLastClass(1).equalsIgnoreCase("TryToRunOut")) {
+                    dbHandler.updateChapter(1,dbHandler.getHealth(1)-7,dbHandler.getSpell(1),"ReactWithShield","TryToRunOut");
+                    Toast.makeText(this, "You have  taken 7 damage!", Toast.LENGTH_SHORT).show();
+                }
 
-                sch1.setHealth(sch1.getHealth()-7);
+
                 //15.1.1.5
                 intent = new Intent(this, TryToRunOut.class);
                 startActivity(intent);

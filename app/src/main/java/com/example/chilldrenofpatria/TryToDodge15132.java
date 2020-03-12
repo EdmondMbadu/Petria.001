@@ -18,9 +18,17 @@ public class TryToDodge15132 extends AppCompatActivity implements View.OnClickLi
 
     Intent intent;
     Chapter1Activity sch1;
+    DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbHandler = new DBHandler(this, null);
+        if(dbHandler.getLastClass(1).equalsIgnoreCase("SitAndWait")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"TryToDodge15132","SitAndWait");
+        }
+        else if(dbHandler.getLastClass(1).equalsIgnoreCase("SpeakToTheMan")) {
+            dbHandler.updateChapter(1,dbHandler.getHealth(1),dbHandler.getSpell(1),"TryToDodge15132","SpeakToTheMan");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_try_to_dodge15132);
 
@@ -30,12 +38,10 @@ public class TryToDodge15132 extends AppCompatActivity implements View.OnClickLi
         textViewChapter1.setTextSize(15);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        textViewChapter1.setText(Html.fromHtml("HP: " + sch1.health + "  SS: " + sch1.spellSlot + "<sup><small>1st<small><sup>"));
+        textViewChapter1.setText(Html.fromHtml("Health: "+dbHandler.getHealth(1)+" Spell Slots: "+dbHandler.getSpell(1)+"<sup><small>1st<small><sup>"));
 
         TextView textView = (TextView) findViewById(R.id.text_scrollTryToDodge15132);
-        String text = "“Cha.”\n" +
-                "\tA shield of energy surrounds you just as the man begins to swing. The sword breaks through the shield but misses, coming down on the floor next to you.\n" +
-                "\tHe falls to the floor with his weapon, but begins to stagger back to his feet. He’s right in front of you now. He looks very weak.\n";
+        String text = "Before you can react, his fist strikes your head. Falling to your knees, you try to put your hands to your head. There’s a pain in the back of your head. Your vision fades.";
         textView.setText(sch1.Format(text), TextView.BufferType.SPANNABLE);
 
         // if the button on Go to town hall continue
@@ -65,6 +71,17 @@ public class TryToDodge15132 extends AppCompatActivity implements View.OnClickLi
                 intent = new Intent(this, Book1Activity.class).putExtra("from", "TryToDodge15132");
                 startActivity(intent);
                 break;
+            case R.id.action_startChapterOver:
+                intent= new Intent(this, Book1Activity.class);
+                dbHandler.deleteChapterContent();
+                dbHandler.addChapter(5, 2, "MainActivity", "");
+                dbHandler.updateChapter(1,5,2,"Book1Activity","HomeActivity");
+                startActivity(intent);
+                break;
+            case R.id.action_lastCheckPoint:
+                intent= new Intent(this, DoleKakawContinue.class);
+                startActivity(intent);
+                break;
         }
 
 
@@ -78,11 +95,13 @@ public class TryToDodge15132 extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.button_GoBackCheckpoint:
                 //15.1.1.6
-                intent = new Intent(this, SpeakToTheMan.class).putExtra("from", "TryToDodge15132");
+                intent = new Intent(this, DoleKakawContinue.class).putExtra("from", "TryToDodge15132");
                 startActivity(intent);
                 break;
+
             case R.id.button_RestartChapter:
                 intent = new Intent(this, Chapter1Activity.class).putExtra("from", "TryToDodge15132");
+                dbHandler.deleteChapterContent();
                 startActivity(intent);
 
                 break;
